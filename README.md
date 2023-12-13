@@ -28,10 +28,3 @@ Backend:
 Databases:
 1. MySQL - hosted in separate Docker containers (accounts, items, notifications, auctions)
 2. Redis - hosted in Docker container (bidding)
-
-### Message Broker
-
-
-### Notifications
-
-
