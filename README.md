@@ -1,17 +1,6 @@
-# ChiPy - Timepiece Traders
+# Timepiece Traders
 
-Thomas Lee  <br>
-Loay Al Rashdi  <br> 
-Ashkan Rohani   <br>
-Eric Segerberg  <br> 
-Cole Spruyt   <br>
-Fei Wang   <br>
-
-## Presentation Instructions:
-https://www.classes.cs.uchicago.edu/archive/2023/fall/51205-1/FinalTeamPresentations.html
-
-## Project Description (Requirements)
-(https://www.classes.cs.uchicago.edu/archive/2023/fall/51205-1/AuctionSiteRequirements.html)
+Group project for MPCS Topics in Software Engineering
 
 ## Running the Application
 0. Download the repo and have Docker Desktop. In the root directory of this project locally, pip install microservices/requirements.txt
@@ -39,20 +28,6 @@ Backend:
 Databases:
 1. MySQL - hosted in separate Docker containers (accounts, items, notifications, auctions)
 2. Redis - hosted in Docker container (bidding)
-
-
-## Specific Microservices
-### Accounts
-
-
-### Auction Platform
-
-
-### Bidding
-
-
-### Items
-
 
 ### Message Broker
 
