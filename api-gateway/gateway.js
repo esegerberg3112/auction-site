@@ -29,7 +29,9 @@ app.use(cors());
 // register middleware function to intercept HTTP requests
 app.use(async (request, response, next) => {
   // check if there is a valid backend route configured by the gateway for the incoming request
-  const microservice = request.path.split("/")[2];
+  const segmentedUrl = request.path.split("/")
+  const microservice = segmentedUrl[2];
+  const targetPath = segmentedUrl[-1];
   const path = "/api/" + microservice;
   const backendURL = backendRoutes[`${path}`];
 
@@ -61,12 +63,8 @@ app.use(async (request, response, next) => {
       return false;
     }
   }
-  let shouldValidate = true;
-  // if not logging in or registering, validate API token
-  // login or register will not provide an Authorization token, every other request must
-  if (request.headers["authorization"]) {
-    shouldValidate = await validate();
-  }
+  // validate API token
+  let shouldValidate = await validate();
   if (shouldValidate) {
     // if a valid URL, route request accordingly
     if (backendURL) {
@@ -75,10 +73,14 @@ app.use(async (request, response, next) => {
       //request.headers['Host-Ip'] = os.networkInterfaces().eth0[0].address;
       proxy.web(request, response, { target: backendURL });
     } else {
-      response.status(404).send("Request URL Not Found.");
+      response.status(404).send("Requested URL Not Found.");
     }
   } else {
-    response.status(401).send("Invalid API token request.");
+    if (targetPath === "login" || targetPath === "register") {
+      proxy.web(request, response, { target: backendURL });
+    } else{
+      response.status(401).send("Invalid API token request.");
+    }
   }
 });
 
