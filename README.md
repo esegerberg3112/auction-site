@@ -32,4 +32,4 @@ Databases:
 4. Run: docker-compose up
 5. Open a separate terminal and navigate to the same root directory
 6. Run: bash start_application.sh
-7. Acess a browser (chrome) window, and search: "http://localhost:3000"
+7. Acess a browser window, and search: "http://localhost:3000"
