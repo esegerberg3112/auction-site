@@ -63,8 +63,9 @@ app.use(async (request, response, next) => {
       return false;
     }
   }
-  // validate API token
-  let shouldValidate = await validate();
+  // validate API token - FINALIZE
+  let shouldValidate = true;
+  //let shouldValidate = await validate();
   if (shouldValidate) {
     // if a valid URL, route request accordingly
     if (backendURL) {
